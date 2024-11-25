@@ -62,8 +62,7 @@ public class AwesomePasswordCheckerTest {
      * {@link IllegalArgumentException}.
      * 
      * @see AwesomePasswordChecker#ComputeMD5(String)
-     */ 
-    /*
+     */  
     @Test
     void testComputeMD5NullInput() {
         // Given
@@ -73,6 +72,6 @@ public class AwesomePasswordCheckerTest {
         assertThrows(IllegalArgumentException.class, () -> {
             AwesomePasswordChecker.ComputeMD5(input);
         }, "An IllegalArgumentException should be thrown for null input.");
-    }*/
+    }
 }
 
