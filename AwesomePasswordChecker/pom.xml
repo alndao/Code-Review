@@ -37,20 +37,21 @@
                 </configuration>       
             </plugin>
             
-             <!-- Plugin Cobertura pour la couverture des tests -->
             <plugin>
-                <groupId>net.sourceforge.cobertura</groupId>
+                <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.0.3</version>
+                <version>2.7</version> <!-- Version plus récente de Cobertura -->
                 <executions>
                     <execution>
+                        <phase>test</phase>
                         <goals>
                             <goal>cobertura</goal>
                         </goals>
-                        <phase>test</phase>  <!-- Exécution du plugin pendant la phase de test -->
                     </execution>
                 </executions>
             </plugin>
+
+
         </plugins>
     </build>
     
