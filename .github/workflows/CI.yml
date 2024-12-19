@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
       # Étape 1: Vérifie le code source (Git checkout)
       - name: Checkout code
@@ -22,26 +22,34 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'temurin' # Spécifie la distribution (par exemple temurin)
+          distribution: 'temurin' # Spécifie la distribution Java
 
-      # Étape 3: Installer Maven et compiler le projet
+      # Étape 3: Aller dans le répertoire du projet Maven
+      - name: Change to project directory
+        run: cd ./Code-Review # Change './Code-Review' si ton fichier pom.xml est ailleurs
+
+      # Étape 4: Installer Maven et compiler le projet
       - name: Build with Maven
         run: mvn clean install -DskipTests=true
+        working-directory: ./Code-Review # Indique le répertoire contenant le pom.xml
 
-      # Étape 4: Exécution des tests unitaires
+      # Étape 5: Exécution des tests unitaires
       - name: Run unit tests
         run: mvn test
+        working-directory: ./Code-Review
 
-      # Étape 5: Vérifier la qualité du code avec Checkstyle
+      # Étape 6: Vérifier la qualité du code avec Checkstyle
       - name: Run Checkstyle
         run: mvn checkstyle:check
+        working-directory: ./Code-Review
 
-      # Étape 6: Générer le rapport Cobertura (test coverage)
+      # Étape 7: Générer le rapport Cobertura (test coverage)
       - name: Generate Cobertura report
         run: mvn cobertura:cobertura
+        working-directory: ./Code-Review
 
-      # Étape 7: Déployer si tout est réussi
+      # Étape 8: Déployer si tout est réussi
       - name: Deploy to Maven repository
         if: success() && github.ref == 'refs/heads/main'
         run: mvn deploy -DskipTests
-
+        working-directory: ./Code-Review
