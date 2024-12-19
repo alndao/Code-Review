@@ -22,6 +22,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
+          distribution: 'temurin' # Spécifie la distribution (par exemple temurin)
 
       # Étape 3: Installer Maven et compiler le projet
       - name: Build with Maven
@@ -43,3 +44,4 @@ jobs:
       - name: Deploy to Maven repository
         if: success() && github.ref == 'refs/heads/main'
         run: mvn deploy -DskipTests
+
