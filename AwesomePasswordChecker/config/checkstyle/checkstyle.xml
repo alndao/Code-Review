@@ -56,13 +56,6 @@
       <property name="tokens" value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, LITERAL_DO, STATIC_INIT, INSTANCE_INIT" />
     </module>
 
-    <!--module name="WhitespaceAround">
-      <property name="allowEmptyConstructors" value="true" />
-      <property name="allowEmptyMethods" value="true" />
-      <property name="allowEmptyTypes" value="true" />
-      <property name="allowEmptyLoops" value="true" />
-    </module-->
-
     <module name="OneStatementPerLine" />
     <module name="MultipleVariableDeclarations" />
     <module name="ArrayTypeStyle" />
@@ -82,32 +75,7 @@
       <property name="tokens" value="COMMA" />
       <property name="option" value="EOL" />
     </module>
-
-    <!--module name="PackageName">
-      <property name="format" value="^[a-z]+(\.[a-z][a-z0-9_]*)*$" />
-    </module>
-
-    <module name="TypeName" />
-    <module name="MemberName">
-      <property name="format" value="^[a-z][a-z0-9][a-zA-Z0-9]*$" />
-    </module>
-
-    <module name="ParameterName">
-      <property name="format" value="^[a-z][a-z0-9][a-zA-Z0-9]*$" />
-    </module-->
-
-    <!--module name="LocalVariableName">
-      <property name="tokens" value="VARIABLE_DEF" />
-      <property name="format" value="^[a-z][a-z0-9][a-zA-Z0-9]*$" />
-      <property name="allowOneCharVarInForLoop" value="true" />
-    </module-->
-
-    <!--module name="Indentation">
-      <property name="basicOffset" value="2" />
-      <property name="braceAdjustment" value="0" />
-      <property name="caseIndent" value="2" />
-    </module-->
-
+    
     <module name="OverloadMethodsDeclarationOrder" />
     <module name="VariableDeclarationUsageDistance" />
     <module name="CustomImportOrder">
@@ -118,4 +86,3 @@
     </module>
   </module>
 </module>
-

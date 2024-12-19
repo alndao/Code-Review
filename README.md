@@ -29,7 +29,7 @@ Before you begin, ensure you have met the following requirements:
 Clone the repository:
 
 ```bash
-https://github.com/alndao/Reveue-de--code.git
+https://github.com/alndao/Code-Review.git
 ```
 
 ### Explication des sections :
