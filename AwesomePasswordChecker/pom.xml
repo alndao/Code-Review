@@ -36,6 +36,21 @@
                     <configLocation>config/checkstyle/checkstyle.xml</configLocation>
                 </configuration>       
             </plugin>
+            
+             <!-- Plugin Cobertura pour la couverture des tests -->
+            <plugin>
+                <groupId>net.sourceforge.cobertura</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>2.0.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>cobertura</goal>
+                        </goals>
+                        <phase>test</phase>  <!-- Exécution du plugin pendant la phase de test -->
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     
