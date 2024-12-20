@@ -39,19 +39,13 @@ jobs:
         run: mvn checkstyle:check
         working-directory: ./AwesomePasswordChecker
 
-      # Étape 6: Configuration de Java 8 pour Cobertura
-      - name: Set up Java 8 for Cobertura
-        uses: actions/setup-java@v3
-        with:
-          java-version: '8'
-          distribution: 'temurin'
-
-      # Étape 7: Générer le rapport Cobertura (test coverage)
-      - name: Generate Cobertura report
-        run: mvn cobertura:cobertura
+      # Étape 6: Générer le rapport Cobertura avec Java 8
+      # Ici, nous activons le profil 'java8' directement dans la commande
+      - name: Generate Cobertura report with Java 8
+        run: mvn cobertura:cobertura -Pjava8
         working-directory: ./AwesomePasswordChecker
 
-      # Étape 8: Déployer si tout est réussi
+      # Étape 7: Déployer si tout est réussi
       - name: Deploy to Maven repository
         if: success() && github.ref == 'refs/heads/main'
         run: mvn deploy -DskipTests
