@@ -13,40 +13,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Étape 1: Vérifie le code source (Git checkout)
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Étape 2: Configuration de Java 17 pour les étapes principales
       - name: Set up Java 17
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      # Étape 3: Installer Maven et compiler le projet
       - name: Build with Maven
-        run: mvn clean install -DskipTests=true 
+        run: mvn clean install -DskipTests=true
         working-directory: ./AwesomePasswordChecker
 
-      # Étape 4: Exécution des tests unitaires
       - name: Run unit tests
         run: mvn test
         working-directory: ./AwesomePasswordChecker
 
-      # Étape 5: Vérifier la qualité du code avec Checkstyle
       - name: Run Checkstyle
         run: mvn checkstyle:check
         working-directory: ./AwesomePasswordChecker
 
-      # Étape 6: Générer le rapport Cobertura avec Java 8
-      # Ici, nous activons le profil 'java8' directement dans la commande
       - name: Generate JaCoCo report
         run: mvn jacoco:report
         working-directory: ./AwesomePasswordChecker
 
-      # Étape 7: Déployer si tout est réussi
-      - name: Deploy to Maven repository
+      - name: Deploy to GitHub Packages
         if: success() && github.ref == 'refs/heads/main'
-        run: mvn deploy -DskipTests
-        working-directory: ./AwesomePasswordChecker
+        run: mvn deploy -DskipTests -DaltDeploymentRepository=github-repository::default::https://maven.pkg.github.com/alndao/Code-Review
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Utiliser le token secret GitHub
