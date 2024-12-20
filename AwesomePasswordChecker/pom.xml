@@ -84,4 +84,13 @@
         </activation>
     </profile>
 </profiles>
+
+<distributionManagement>
+    <repository>
+        <id>github-repository</id> <!-- ID du dépôt -->
+        <name>GitHub Packages</name> <!-- Nom du dépôt -->
+        <url>https://maven.pkg.github.com/alndao/Code-Review</url> <!-- URL du dépôt GitHub Packages -->
+    </repository>
+</distributionManagement>
+
 </project>
