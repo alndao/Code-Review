@@ -37,12 +37,11 @@ jobs:
       - name: Generate JaCoCo report
         run: mvn jacoco:report
         working-directory: ./AwesomePasswordChecker
-      
-      - name: Navigate to the correct directory
-        run: cd Code-Review/AwesomePasswordChecker  # Naviguer vers le répertoire contenant le pom.xml
     
       - name: Run Maven deploy
         run: mvn deploy -DskipTests -DaltDeploymentRepository=github-repository::default::https://maven.pkg.github.com/alndao/Code-Review
+        working-directory: .//AwesomePasswordChecker  # Répertoire contenant le pom.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
