@@ -26,7 +26,7 @@ jobs:
 
       # Étape 3: Installer Maven et compiler le projet
       - name: Build with Maven
-        run: mvn clean install -DskipTests=true -X -B
+        run: mvn clean install -DskipTests=false
         working-directory: ./AwesomePasswordChecker
 
       # Étape 4: Exécution des tests unitaires
