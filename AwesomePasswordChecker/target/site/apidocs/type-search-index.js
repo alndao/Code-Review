@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"fr.isima.codereview.tp1.awesomepasswordchecker","l":"AwesomePasswordChecker"}];updateSearchResults();
