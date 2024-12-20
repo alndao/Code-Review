@@ -37,26 +37,6 @@ jobs:
       - name: Generate JaCoCo report
         run: mvn jacoco:report
         working-directory: ./AwesomePasswordChecker
-    
-      - name: Set up Maven settings
-        run: |
-          mkdir -p ~/.m2
-          echo "<settings>
-            <servers>
-              <server>
-                <id>github-repository</id>
-                <username>github</username>
-                <password>${{ secrets.GITHUB_TOKEN }}</password>
-              </server>
-            </servers>
-          </settings>" > ~/.m2/settings.xml
-        working-directory: ./AwesomePasswordChecker
-
-      - name: Run Maven deploy
-        run: mvn deploy -DskipTests -DaltDeploymentRepository=github-repository::default::https://maven.pkg.github.com/alndao/Code-Review
-        working-directory: ./AwesomePasswordChecker
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+  
 
 
