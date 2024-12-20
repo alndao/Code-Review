@@ -41,8 +41,8 @@ jobs:
 
       # Étape 6: Générer le rapport Cobertura avec Java 8
       # Ici, nous activons le profil 'java8' directement dans la commande
-      - name: Generate Cobertura report with Java 8
-        run: mvn cobertura:cobertura -Pjava8
+      - name: Generate JaCoCo report
+        run: mvn jacoco:report
         working-directory: ./AwesomePasswordChecker
 
       # Étape 7: Déployer si tout est réussi
