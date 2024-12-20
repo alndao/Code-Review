@@ -37,9 +37,12 @@ jobs:
       - name: Generate JaCoCo report
         run: mvn jacoco:report
         working-directory: ./AwesomePasswordChecker
-
-      - name: Deploy to GitHub Packages
-        if: success() && github.ref == 'refs/heads/main'
+      
+      - name: Navigate to the correct directory
+        run: cd Code-Review/AwesomePasswordChecker  # Naviguer vers le répertoire contenant le pom.xml
+    
+      - name: Run Maven deploy
         run: mvn deploy -DskipTests -DaltDeploymentRepository=github-repository::default::https://maven.pkg.github.com/alndao/Code-Review
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Utiliser le token secret GitHub
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
