@@ -17,7 +17,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Étape 2: Configuration de Java
+      # Étape 2: Configuration de Java 17 pour les étapes principales
       - name: Set up Java 17
         uses: actions/setup-java@v3
         with:
@@ -39,12 +39,19 @@ jobs:
         run: mvn checkstyle:check
         working-directory: ./AwesomePasswordChecker
 
-      # Étape 6: Générer le rapport Cobertura (test coverage)
+      # Étape 6: Configuration de Java 8 pour Cobertura
+      - name: Set up Java 8 for Cobertura
+        uses: actions/setup-java@v3
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+
+      # Étape 7: Générer le rapport Cobertura (test coverage)
       - name: Generate Cobertura report
         run: mvn cobertura:cobertura
         working-directory: ./AwesomePasswordChecker
 
-      # Étape 7: Déployer si tout est réussi
+      # Étape 8: Déployer si tout est réussi
       - name: Deploy to Maven repository
         if: success() && github.ref == 'refs/heads/main'
         run: mvn deploy -DskipTests
